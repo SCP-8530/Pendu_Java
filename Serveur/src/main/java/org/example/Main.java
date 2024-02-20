@@ -30,14 +30,14 @@ public class Main {
 
             //commencer une parti?
             while (true) {
-                socketOut.printf("Voulez vous jouez une parti? [Y or N]");
+                socketOut.printf("Voulez vous jouez une parti? [Y or N]\n");
                 String choice = socketIn.readLine();
                 System.out.println("DEBUG: Choix de client: " + choice);
 
                 //commencer une partir
                 if (choice.matches("Y|y|yes|Yes|Oui|oui")) {
-                    socketOut.printf("Debut de la partie");
-                    socketOut.printf("Fin de la partie");
+                    socketOut.println("Debut de la partie");
+                    socketOut.println("Fin de la partie");
                 }
                 //fermer le client et le serveur
                 else if (choice.matches("N|n|No|no|Non|non")) {
@@ -45,7 +45,7 @@ public class Main {
                 }
                 //recommencer la boucle
                 else {
-                    socketOut.printf("Reponse non valide.");
+                    socketOut.printf("Reponse non valide. ");
                 }
             }
 
