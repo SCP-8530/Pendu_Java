@@ -14,6 +14,9 @@ public class Game {
         }
     }
 
+    //GET-SET
+    public String getHidden_word() {return hidden_word;}
+
     /**
      * Test un charactere voir si il est dans le mot et modifie le mot cacher si c'est necessaire
      * */
@@ -39,7 +42,7 @@ public class Game {
     /**
      * Changer un charactere specifique
      * */
-    public String modifier_char(String hidden_word, String new_char, int index) {
+    private String modifier_char(String hidden_word, String new_char, int index) {
         String new_hidden_word = "";
 
         //boucle de generation du nouveau mot
