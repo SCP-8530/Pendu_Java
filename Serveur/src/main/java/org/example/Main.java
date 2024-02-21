@@ -35,12 +35,12 @@ public class Main {
                 System.out.println("DEBUG: Choix de client: " + choice);
 
                 //commencer une partir
-                if (choice.matches("Y|y|yes|Yes|Oui|oui")) {
+                if (choice.matches("^Y|y|yes|Yes|Oui|oui$")) {
                     socketOut.println("Debut de la partie");
                     socketOut.println("Fin de la partie");
                 }
                 //fermer le client et le serveur
-                else if (choice.matches("N|n|No|no|Non|non")) {
+                else if (choice.matches("^N|n|No|no|Non|non|NEIN_NEIN_NEIN_NEIN$")) {
                     break;
                 }
                 //recommencer la boucle
