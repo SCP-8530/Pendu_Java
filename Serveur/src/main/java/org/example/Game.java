@@ -17,7 +17,7 @@ public class Game {
     /**
      * Test un charactere voir si il est dans le mot et modifie le mot cacher si c'est necessaire
      * */
-    public void Test_Char(String character, String real_word) {
+    public boolean Test_Char(String character, String real_word) {
         boolean caractere_modif = false;
 
         //parcourrir le mot cacher
@@ -31,6 +31,9 @@ public class Game {
                 hidden_word = modifier_char(hidden_word, character, i);
             }
         }
+
+        //retourne si oui ou non on pert une vie
+        return caractere_modif;
     }
 
     /**
@@ -52,4 +55,6 @@ public class Game {
         //retour
         return new_hidden_word;
     }
+
+
 }

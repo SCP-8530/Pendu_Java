@@ -2,6 +2,7 @@ package org.example;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Pendu_Visual {
     private ArrayList<String> list = new ArrayList<String>();
@@ -103,5 +104,16 @@ public class Pendu_Visual {
      * */
     public String Affiche(int vie) {
         return list.get(vie);
+    }
+
+    public String Lettre_test(ArrayList<String> list) {
+        String first_str = "Lettre deja essayer :";
+        String second_str = " ";
+
+        for (int i = 0; i < list.size(); i++) {
+            second_str = second_str + list.get(i) + ", ";
+        }
+
+        return first_str + second_str;
     }
 }
