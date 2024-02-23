@@ -51,8 +51,8 @@ public class Main {
                         //affiche le pendu celon la vie
                         socketOut.println(penduVisual.Affiche(Life));
 
-                        //affiche les charateres tester
-                        if (list_char_tester.size() > 0) {
+                        //affiche les charateres tester sauf si il y a aucun character tester
+                        if (!list_char_tester.isEmpty()) {
                             socketOut.println(penduVisual.Lettre_test(list_char_tester));
                         }
 
@@ -66,26 +66,45 @@ public class Main {
                             if (list_char_tester.contains(character_choice)) {
                                 socketOut.println("Vous avez deja essayer cette lettre :)");
                             } else if (character_choice.matches("^[a-z]{1}|[A-Z]{1}$")) {
+                                //mettre la lettre en minuscule
+                                character_choice = character_choice.toLowerCase();
+
                                 //ajout du character dans les tentatives
                                 list_char_tester.add(character_choice);
 
                                 //test du charactere
-                                if(game.Test_Char(character_choice,word.getMots_choisie())) {
-                                    break;
-                                } else { //character non valide = perte d'une vie
-                                    Life--;
-                                    break;
+                                if(!game.Test_Char(character_choice,word.getMots_choisie())) {
+                                    Life--; //Le caractere est faut donc on retire une vie
                                 }
 
+                                //finir la boucle car on a eu un caractere valide a tester
+                                break;
                             } else {
                                 socketOut.println("Vous ne pouvez mettre qu'une seul lettre et pas un caractere special.");
                             }
+                        }
+
+                        //Voir si le jeu est terminer
+                        if (Life == 0) { //Parti perdu
+                            socketOut.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                            socketOut.println(penduVisual.Affiche(0));
+                            socketOut.println("Malheureusement vous avez perdu. Le mot etait :" + word.getMots_choisie());
+
+                            break;
+                        }
+                        if (Objects.equals(word.getMots_choisie(), game.getHidden_word())) { //Parti gagner
+                            socketOut.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+                            socketOut.println("Vous avez bien deviner que le mot etait: " + word.getMots_choisie());
+
+                            break;
                         }
 
                         //afficher le mot actuelle
                         socketOut.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMot : " + game.getHidden_word());
 
                     }
+
+                    break;
 
                 }
                 //fermer le client et le serveur
