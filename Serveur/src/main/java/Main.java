@@ -25,11 +25,12 @@ public class Main {
             BufferedReader socketIn = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
             //message de bienvenue
-            socketOut.printf("Bienvenue sur le pendu des noms des personnage de Genshin Impact.\n");
+            socketOut.println("Bienvenue sur le pendu des noms des personnage de Genshin Impact.");
 
             //commencer une parti?
             while (true) {
-                socketOut.printf("Voulez vous jouez une parti? [Y or N]\n");
+                socketOut.println("Voulez vous jouez une parti? [Y or N]");
+                socketOut.println("INPUT");
                 String choice = socketIn.readLine();
                 System.out.println("DEBUG: Choix de client: " + choice);
 
@@ -56,6 +57,7 @@ public class Main {
                         //demande un caracter
                         while (true) {
                             socketOut.println("Qu'elle lettre voulez vous essayer? ");
+                            socketOut.println("INPUT");
                             String character_choice = socketIn.readLine();
                             System.out.println("DEBUG: Charactere recu: " + character_choice);
 
@@ -103,11 +105,12 @@ public class Main {
                 }
                 //fermer le client et le serveur
                 else if (choice.matches("^N|n|No|no|Non|non|NEIN_NEIN_NEIN_NEIN$")) {
+                    socketOut.println("END");
                     break;
                 }
                 //recommencer la boucle
                 else {
-                    socketOut.printf("Reponse non valide. ");
+                    socketOut.println("Reponse non valide. ");
                 }
             }
 

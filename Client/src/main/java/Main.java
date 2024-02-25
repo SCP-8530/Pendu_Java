@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
@@ -22,11 +23,11 @@ public class Main {
                 String message = socketIn.readLine();
 
                 //test pour savoir l'action a faire
-                if (message == "INPUT") { //Envoyer une donner au serveur
+                if (Objects.equals(message, "INPUT")) { //Envoyer une donner au serveur
                     Scanner scanner = new Scanner(System.in);
                     String input = scanner.nextLine();
-                    System.out.println(input);
-                } else if (message == "END") { //Fermeture de serveur
+                    socketOut.printf("%s\n",input);
+                } else if (Objects.equals(message, "END")) { //Fermeture de serveur
                     break;
                 } else { //Envoyer les message du serveur sur la console
                     System.out.println(message);
