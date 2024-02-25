@@ -2,17 +2,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
-import java.net.Socket;
+import java.net.*;
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         ServerSocket serverSocket;
         Socket clientSocket;
+        InetAddress inetAddress = InetAddress.getByName("224.214.26.78");
+        int port = 1234;
 
-        try {
+
+        try (DatagramSocket datagramSocket = new DatagramSocket()) {
             //lire le port
             serverSocket = new ServerSocket(8080);
 
