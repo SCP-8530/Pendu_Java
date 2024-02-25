@@ -1,5 +1,3 @@
-package org.example;
-
 public class Game {
     private String hidden_word = "";
 

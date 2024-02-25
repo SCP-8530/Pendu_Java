@@ -1,5 +1,3 @@
-package org.example;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Objects;
-import java.util.zip.GZIPOutputStream;
 
 public class Main {
     public static void main(String[] args) {
@@ -103,9 +100,6 @@ public class Main {
                         socketOut.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nMot : " + game.getHidden_word());
 
                     }
-
-                    break;
-
                 }
                 //fermer le client et le serveur
                 else if (choice.matches("^N|n|No|no|Non|non|NEIN_NEIN_NEIN_NEIN$")) {
